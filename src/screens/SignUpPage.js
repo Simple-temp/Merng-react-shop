@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useMutation } from '@apollo/client';
-import { SIGNUP_USER } from '../grapgqlMutation/Mutations';
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { createUser } from '../Redux/Action';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({})
-    const [signup, { loading, error, data }] = useMutation(SIGNUP_USER,{
-        onCompleted(data) {
-            localStorage.getItem("userInfo")
-            navigate("/")
-            // window.location.reload()
-        }
-    })
-    console.log(data)
 
     const handleChange = (e) => {
         setFormData({
@@ -27,29 +19,31 @@ const SignUpPage = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(e)
         console.log(formData)
-        signup({
-            variables: {
-                signupuser : formData
-            }
-        })
-        dispatch(createUser(formData))
-        localStorage.setItem("userInfo", JSON.stringify(formData))
+
+        try{
+
+            const { data } = await axios.post("http://localhost:4000/api/user/signup",{
+                formData
+            })
+            console.log(data)
+            dispatch(createUser(data))
+            localStorage.setItem("userInfo", JSON.stringify(data))
+            navigate("/")
+
+        }catch(err){
+
+            console.log(err.message)
+            toast.error("Invalid email and password")
+
+        }
+
     }
 
     return (
         <div className='container'>
-            {
-                loading && <h4>Loading...</h4>
-            }
-            {
-                error && <Alert variant="danger" className='mt-3'>{error.message}</Alert>
-            }
-            {
-                data && data.user && <Alert variant="success" className='mt-3'>Welcome {data.user.name}..please login your account</Alert>
-            }
             <Row>
                 <h4 className='text-center my-5'>Sign up</h4>
                 <Col md={7} className="mx-auto border p-4 mb-5">

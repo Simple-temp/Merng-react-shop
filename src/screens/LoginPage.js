@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { SIGNIN_USER } from '../grapgqlMutation/Mutations';
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
+import axios from "axios"
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../Redux/Action';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [formData, setFormData] = useState({})
-    const [signin, { loading, error, data }] = useMutation(SIGNIN_USER,{
-        onCompleted(data) {
-            localStorage.getItem("userInfo")
-            navigate("/")
-            // window.location.reload()
-        }
-    })
-    console.log(data)
 
     const handleChange = (e) => {
         setFormData({
@@ -28,26 +20,30 @@ const LoginPage = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(e)
         console.log(formData)
-        signin({
-            variables: {
-                signIn: formData
-            }
-        })
-        dispatch(loginUser(formData))
-        localStorage.setItem("userInfo", JSON.stringify(formData))
+
+        try{
+
+            const { data } = await axios.post("http://localhost:4000/api/user/signin",{
+                formData
+            })
+            console.log(data)
+            dispatch(loginUser(data))
+            localStorage.setItem("userInfo", JSON.stringify(data))
+            navigate("/")
+
+        }catch(err){
+
+            console.log(err.message)
+            toast.error("Invalid email and password")
+
+        }
     }
 
     return (
         <div className='container'>
-            {
-                loading && <h4>Loading...</h4>
-            }
-            {
-                error && <Alert variant="danger" className='mt-3'>{error.message}</Alert>
-            }
             <Row>
                 <h4 className='text-center my-5'>Log In</h4>
                 <Col md={7} className="mx-auto border p-4 mb-5">

@@ -3,14 +3,14 @@ import { Form, Button, Container, Nav, Navbar, FormControl } from 'react-bootstr
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOutUser } from '../Redux/Action';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Navigationbar = () => {
 
     const dispatch = useDispatch()
     const user = useSelector((state) => state.handleCart)
-    console.log(user.userInfo)
+    // console.log(user.userInfo)
 
     const signoutHandler = (user) => {
         dispatch(logOutUser(user))
@@ -39,9 +39,15 @@ const Navigationbar = () => {
                     </Form>
                     <Nav className="ms-auto my-2 my-lg-0">
                         {
-                            user.userInfo ? <>
+                            user.userInfo && user.userInfo.isAdmin ? <>
+                                <LinkContainer to="/cart">
+                                    <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
+                                </LinkContainer>
                                 <LinkContainer to="/admin/dashboard">
-                                    <Nav.Link>Admin</Nav.Link>
+                                    <Nav.Link>Dashboard</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/admin/profile">
+                                    <Nav.Link>Admin Profile</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/admin/history">
                                     <Nav.Link>Order History</Nav.Link>
@@ -52,24 +58,44 @@ const Navigationbar = () => {
                                 <LinkContainer to="/admin/course">
                                     <Nav.Link>Courses</Nav.Link>
                                 </LinkContainer>
+                                <LinkContainer to="/admin/adminlist">
+                                    <Nav.Link>Admin List</Nav.Link>
+                                </LinkContainer>
                                 <Button variant='outline-dark' onClick={() => signoutHandler(user.userInfo)}>
                                     <Link to="#signout">
                                         <i className="fa-solid fa-right-from-bracket"></i>
                                     </Link>
                                 </Button>
 
-                            </> : <>
-
+                            </> : user.userInfo ? <>
                                 <LinkContainer to="/cart">
                                     <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
                                 </LinkContainer>
-                                <LinkContainer to="/login">
-                                    <Button variant="outline-dark m-1">Log in</Button>
+                                <LinkContainer to="/updateprofile">
+                                    <Nav.Link>Profile</Nav.Link>
                                 </LinkContainer>
-                                <LinkContainer to="/signup">
-                                    <Button variant="dark" className='m-1'>Sign Up</Button>
+                                <LinkContainer to="/userorderhistory">
+                                    <Nav.Link>Order history</Nav.Link>
                                 </LinkContainer>
+                                <Button variant='outline-dark' onClick={() => signoutHandler(user.userInfo)}>
+                                    <Link to="#signout">
+                                        <i className="fa-solid fa-right-from-bracket"></i>
+                                    </Link>
+                                </Button>
                             </>
+                                :
+                                <>
+
+                                    <LinkContainer to="/cart">
+                                        <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
+                                    </LinkContainer>
+                                    <LinkContainer to="/login">
+                                        <Button variant="outline-dark m-1">Log in</Button>
+                                    </LinkContainer>
+                                    <LinkContainer to="/signup">
+                                        <Button variant="dark" className='m-1'>Sign Up</Button>
+                                    </LinkContainer>
+                                </>
                         }
                     </Nav>
                 </Navbar.Collapse>

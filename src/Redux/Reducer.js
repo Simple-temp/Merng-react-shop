@@ -21,8 +21,10 @@ const handleCart = (state = cart, action) => {
             return { ...state, userInfo: action.payload }
         case "SIGN_UP_USER":
             return { ...state, userInfo: action.payload }
+        case "UPDATE_USER":
+            return { ...state, userInfo: action.payload }
         case "LOGOUT_USER":
-            return { ...state, userInfo: null}
+            return { ...state, userInfo: null }
 
         default:
             return state
