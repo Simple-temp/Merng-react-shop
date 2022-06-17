@@ -19,7 +19,7 @@ const Navigationbar = () => {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className='navbar-bg-color'>
             <Container >
                 <Navbar.Brand href="#">
                     <LinkContainer to="/">
