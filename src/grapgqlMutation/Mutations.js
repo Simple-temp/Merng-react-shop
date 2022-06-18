@@ -89,19 +89,19 @@ mutation deletecourse ( $courseId : ID! ){
 
 export const UPDATE_COURSE= gql `
 
-mutation updateCourse ( $updateCourse : UpdateCourse! ){
-    updateCourse(UpdateCourse : $updateCourse){
-      _id
-      name
-      quantity
-      category
-      img
-      description
-      totalsell
-      rating
-      price
-    }
+mutation updateCourse ( $CourseId : UpdateCourse! ){
+  updateCourse(UpdateCourse : $CourseId){
+    _id
+    name
+    quantity
+    category
+    img
+    description
+    totalsell
+    rating
+    price
   }
+}
 
 `
 

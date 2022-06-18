@@ -58,3 +58,65 @@ footer {
   list-style: none;
   line-height: 32px;
 }
+.courser-img{
+  width:75px;
+  height:auto;
+}
+.img-height{
+  height:220px;
+}
+.confirm-box__actions button{
+  background: transparent;
+  border:1px solid rgb(255, 0, 0);
+  color:rgb(0, 0, 0);
+  padding:5px 9px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+.confirm-box__actions button:nth-child(1){
+  border:1px solid rgb(51, 255, 0);
+}
+.table
+{
+    background-color: #fff;
+    padding:20px;
+}
+thead
+{
+    background-color: rgb(243, 243, 243);
+}
+@media (max-width:992px) {
+    .table thead
+    {
+        display: none;
+    }
+    .table , .table tbody, .table tr, .table td{
+        width: 100;
+        display: block;
+    }
+    .table tr
+    {
+        margin-bottom:15px;
+        border-bottom: 1px solid #000;
+    }
+    .table td{
+        text-align:right;
+        padding-left: 25%;
+        position: relative;
+    }
+    .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left:0;
+        width:50%;
+        padding-left:15px;
+        font-size:15px;
+        font-weight:bold;
+        text-align:left;
+    }
+}

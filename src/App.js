@@ -5,8 +5,10 @@ import { ToastContainer } from 'react-toastify';
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./Home/Home";
+import AdminAddCourse from "./screens/AdminAddCourse";
 import AdminAllCourse from "./screens/AdminAllCourse";
 import AdminAllUser from "./screens/AdminAllUser";
+import AdminCOurseEdit from "./screens/AdminCOurseEdit";
 import AdminDashBoard from "./screens/AdminDashBoard";
 import AdminHistory from "./screens/AdminHistory";
 import AdminList from "./screens/AdminList";
@@ -42,7 +44,9 @@ function App() {
               <Route path="/admin/user" element={<AdminAllUser/>} />
               <Route path="/admin/course" element={<AdminAllCourse/>} />
               <Route path="/admin/adminlist" element={<AdminList/>} />
-
+              <Route path="/admin/courseedit" element={<AdminCOurseEdit/>} />
+              <Route path="/admin/courseedit/:id" element={<AdminCOurseEdit/>} />
+              <Route path="/admin/addcourse" element={<AdminAddCourse/>} />
           </Routes>
         </main>
         <footer>

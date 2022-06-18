@@ -6,7 +6,7 @@ import { GET_ALL_COURSE } from '../graphqlQueres/Queres';
 const Course = () => {
 
     const { loading, error, data } = useQuery(GET_ALL_COURSE)
-    console.log(data)
+    // console.log(data)
 
     return (
         <section>
@@ -32,7 +32,7 @@ const Course = () => {
                                 return (
                                     <Col sm={12} md={6} lg={3} className="mt-2" key={course._id}>
                                         <Card className='m-2'>
-                                            <Card.Img variant="top" src={course.img} />
+                                            <Card.Img variant="top" src={course.img} className="img-height"/>
                                             <Card.Body>
                                                 <Card.Title>Card Title</Card.Title>
                                                 <Card.Text>
