@@ -13,6 +13,7 @@ import AdminDashBoard from "./screens/AdminDashBoard";
 import AdminHistory from "./screens/AdminHistory";
 import AdminList from "./screens/AdminList";
 import Cart from "./screens/Cart";
+import CourseDetails from "./screens/CourseDetails";
 import LoginPage from "./screens/LoginPage";
 import SignUpPage from "./screens/SignUpPage";
 import UpdateProfile from "./screens/UpdateProfile";
@@ -35,6 +36,7 @@ function App() {
               <Route path="/cart" element={<Cart/>} />
               <Route path="/updateprofile" element={<UpdateProfile/>} />
               <Route path="/userorderhistory" element={<UserOrderHistory/>} />
+              <Route path="/course/:id" element={<CourseDetails/>} />
 
               {/* Admin Routes */}
 

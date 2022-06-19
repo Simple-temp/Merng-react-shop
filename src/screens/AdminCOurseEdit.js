@@ -29,7 +29,7 @@ const AdminCOurseEdit = () => {
             })
             console.log(data)
             toast.success("Course updated")
-            navigate("/")
+            navigate("/admin/course")
             window.location.reload()
         }catch(err){
             console.log(err)
@@ -63,6 +63,10 @@ const AdminCOurseEdit = () => {
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control type="text" name="description" onChange={(e) => handleChange(e)} />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Total video</Form.Label>
+                                <Form.Control type="text" name="totalsell" onChange={(e) => handleChange(e)} />
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Rating</Form.Label>
