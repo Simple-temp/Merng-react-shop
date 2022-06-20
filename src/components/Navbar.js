@@ -69,9 +69,10 @@ const Navigationbar = () => {
                                 </Button>
 
                             </> : user.userInfo ? <>
-                                <LinkContainer to="/cart">
+                                <Link to="/cart" className='cart-icon text-secondary'>
+                                    <Badge bg='danger'>{cart.cart.cartItem.length}</Badge>
                                     <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
-                                </LinkContainer>
+                                </Link>
                                 <LinkContainer to="/updateprofile">
                                     <Nav.Link>Profile</Nav.Link>
                                 </LinkContainer>
@@ -87,9 +88,10 @@ const Navigationbar = () => {
                                 :
                                 <>
 
-                                    <LinkContainer to="/cart">
+                                    <Link to="/cart" className='cart-icon text-secondary'>
+                                        <Badge bg='danger'>{cart.cart.cartItem.length}</Badge>
                                         <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
-                                    </LinkContainer>
+                                    </Link>
                                     <LinkContainer to="/login">
                                         <Button variant="outline-dark m-1">Log in</Button>
                                     </LinkContainer>

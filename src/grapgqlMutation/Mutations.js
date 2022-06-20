@@ -51,6 +51,36 @@ mutation updateuser ( $updateUser : UpdateUser! ){
 
 `
 
+export const MAKE_ADMIN = gql `
+
+mutation makeAdmin ( $UserId : makeAdmin! ){
+  makeadmin (Admin : $UserId) {
+    email
+  }
+}
+
+`
+
+export const DELETE_ADMIN = gql `
+
+mutation deleteadmin ( $deleteId : deleteAdmin! ){
+  deleteadmin(Admin : $deleteId){
+    email
+  }
+}
+
+`
+
+export const DELETE_ADMIN_BY_ID = gql `
+
+mutation admindeletebyid ( $deleteById : ID! ){
+  admindeletebyid (_id : $deleteById){
+    email
+  }
+}
+
+`
+
 export const CREATE_COURSE = gql `
 
 mutation createCourse ( $createcourse : createCourse! ){

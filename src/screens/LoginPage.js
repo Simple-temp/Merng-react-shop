@@ -22,14 +22,14 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(e)
-        console.log(formData)
+        // console.log(formData)
 
         try{
 
             const { data } = await axios.post("http://localhost:4000/api/user/signin",{
                 formData
             })
-            console.log(data)
+            // console.log(data)
             dispatch(loginUser(data))
             localStorage.setItem("userInfo", JSON.stringify(data))
             navigate("/")

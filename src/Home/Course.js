@@ -32,15 +32,14 @@ const Course = () => {
         setFilter(filterCOurse)
     }
 
-    const addToCartCourse = (c, courseId) => {
-        // console.log(c)
-        // const existItem = cart.cart.cartItem.find((x)=> x._id === courseId)
+    const addToCartCourse = (c, courseId, quantity) => {
+        // console.log(courseId, quantity)
+        const existItem = c.find((x)=> x._id === courseId)
         // console.log(existItem)
-        // const quantity = existItem ? existItem.quantity + 1 : 1
+        // const quantity = existItem ? ++ existItem.quantity : 1
         // console.log(quantity)
-        // dispatch(addToCart(c, quantity))
+        dispatch(addToCart(existItem, quantity))
     }
-
 
     return (
         <section>
@@ -76,7 +75,7 @@ const Course = () => {
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Link>
-                                            <Button variant="outline-dark" className='d-block me-auto mb-3 ms-3' onClick={() => addToCartCourse(filter, course._id)}>Add to cart</Button>
+                                            <Button variant="outline-dark" className='d-block me-auto mb-3 ms-3' onClick={() => addToCartCourse(filter, course._id, course.quantity)}>Add to cart</Button>
                                         </Card>
                                     </Col>
                                 )

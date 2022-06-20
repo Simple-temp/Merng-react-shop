@@ -1,8 +1,10 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
 import { GET_ALL_USER } from '../graphqlQueres/Queres';
 import Modal from 'react-modal';
+import { DELETE_USER, MAKE_ADMIN } from '../grapgqlMutation/Mutations';
+import { toast } from 'react-toastify';
 
 const customStyles = {
     content: {
@@ -21,7 +23,9 @@ const customStyles = {
 const AdminAllUser = () => {
 
     const { loading, error, data } = useQuery(GET_ALL_USER)
-    console.log(data)
+    const [ makeAadmin ] = useMutation(MAKE_ADMIN)
+    const [ deleteuser  ] = useMutation(DELETE_USER)
+    const [ email, setEmail ] = useState("")
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -35,6 +39,24 @@ const AdminAllUser = () => {
 
     const handleRemove = async (id) => {
         console.log(id)
+        deleteuser({
+            variables : {
+                userId : id
+            }
+        })
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        makeAadmin({
+            variables : {
+                UserId : {
+                    email
+                }
+            }
+        })
+        toast.success("Admin Make Successfully")
+        window.location.reload()
     }
 
     return (
@@ -44,10 +66,10 @@ const AdminAllUser = () => {
             }
             <Alert variant="info" className='mt-3'>Total users : {data && data.users && data.users.length}</Alert>
             <Col lg={5} className="d-block ms-auto">
-                <Form className=''>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
                     </Form.Group>
                     <Button variant="dark" type="submit">
                         Make an Admin
