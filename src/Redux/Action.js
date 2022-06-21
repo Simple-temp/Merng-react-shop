@@ -39,3 +39,16 @@ export const removeCart = (course) => {
         payload : course,
     }
 }
+
+export const savePayment = (paymentInfo) =>{
+    return{
+        type: "SAVE_PAYMENT_METHOD",
+        payload: paymentInfo,
+    }
+}   
+
+export const clearCart = () =>{
+    return{
+        type: "CLEAR_CART",
+    }
+}   

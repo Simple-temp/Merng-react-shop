@@ -10,11 +10,13 @@ import AdminAllCourse from "./screens/AdminAllCourse";
 import AdminAllUser from "./screens/AdminAllUser";
 import AdminCOurseEdit from "./screens/AdminCOurseEdit";
 import AdminDashBoard from "./screens/AdminDashBoard";
-import AdminHistory from "./screens/AdminHistory";
 import AdminList from "./screens/AdminList";
 import Cart from "./screens/Cart";
 import CourseDetails from "./screens/CourseDetails";
 import LoginPage from "./screens/LoginPage";
+import OrderDetails from "./screens/OrderDetails";
+import PaymentMethod from "./screens/PaymentMethod";
+import PlaceOrder from "./screens/PlaceOrder";
 import SignUpPage from "./screens/SignUpPage";
 import UpdateProfile from "./screens/UpdateProfile";
 import UserOrderHistory from "./screens/UserOrderHistory";
@@ -37,12 +39,14 @@ function App() {
               <Route path="/updateprofile" element={<UpdateProfile/>} />
               <Route path="/userorderhistory" element={<UserOrderHistory/>} />
               <Route path="/course/:id" element={<CourseDetails/>} />
+              <Route path="/payment" element={<PaymentMethod/>} />
+              <Route path="/placeorder" element={<PlaceOrder/>} />
+              <Route path="/order/:id" element={<OrderDetails/>} />
 
               {/* Admin Routes */}
 
               <Route path="/admin/dashboard" element={<AdminDashBoard/>} />
               <Route path="/admin/profile" element={<UpdateProfile/>} />
-              <Route path="/admin/history" element={<AdminHistory/>} />
               <Route path="/admin/user" element={<AdminAllUser/>} />
               <Route path="/admin/course" element={<AdminAllCourse/>} />
               <Route path="/admin/adminlist" element={<AdminList/>} />

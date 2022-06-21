@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Alert } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useEffect } from 'react';
 import axois from "axios"
+import { useSelector } from "react-redux"
 
-const UserOrderHistory = () => {
+const Order = () => {
 
     const user = useSelector((state) => state.handleCart)
 
@@ -28,12 +28,10 @@ const UserOrderHistory = () => {
     }, [])
 
     return (
-        <div className='container'>
-            {
-                user.cart.cartItem.length === 0 && <Alert variant="primary" className='mt-3'>Empty..</Alert> 
-            }
+        <div>
+
         </div>
     );
 };
 
-export default UserOrderHistory;
+export default Order;

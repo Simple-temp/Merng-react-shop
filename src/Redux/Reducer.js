@@ -9,7 +9,10 @@ const cart = {
     cart: {
         cartItem: localStorage.getItem("cartItem")
             ? JSON.parse(localStorage.getItem("cartItem"))
-            : []
+            : [],
+        paymentMethod: localStorage.getItem("paymentMethod")
+            ? localStorage.getItem("paymentMethod")
+            : "",
     }
 }
 
@@ -24,7 +27,7 @@ const handleCart = (state = cart, action) => {
         case "UPDATE_USER":
             return { ...state, userInfo: action.payload }
         case "LOGOUT_USER":
-            return { ...state, userInfo: null }
+            return { ...state, userInfo: null, cart: { cartItem: [], paymentMethod: "" } }
         case "ADD_TO_CART":
             const newItem = action.payload
             const existItem = state.cart.cartItem.find(item => item._id === newItem._id)
@@ -39,6 +42,14 @@ const handleCart = (state = cart, action) => {
                 localStorage.setItem("cartItem", JSON.stringify(cartItem))
                 return { ...state, cart: { ...state.cart, cartItem } }
             }
+        case "SAVE_PAYMENT_METHOD":
+            return {
+                ...state,
+                cart: { ...state.cart, paymentMethod: action.payload }
+            }
+
+        case "CLEAR_CART":
+            return { ...state, cart: { ...state.cart, cartItem: [] } }
 
         default:
             return state

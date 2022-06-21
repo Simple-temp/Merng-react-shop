@@ -71,7 +71,6 @@ query getAllOrders {
       _id
       userid
       orderitem{
-          _id
           name
           quantity
           category
@@ -80,6 +79,7 @@ query getAllOrders {
           totalsell
           rating
           price
+          course_id
       }
       paymentMethod
       itemprice

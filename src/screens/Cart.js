@@ -68,8 +68,10 @@ const Cart = () => {
                             <ListGroup.Item>Total Item Price : ${itemPrice.toFixed(2)}</ListGroup.Item>
                             <ListGroup.Item>Total tax : {totalTax.toFixed(2)}</ListGroup.Item>
                             <ListGroup.Item>Total Price : ${totalPrice.toFixed(2)}</ListGroup.Item>
-                            <Button variant='outline-dark' className='py-3 m-2' >Go</Button>
                         </ListGroup>
+                        <Link to="/payment" className='text-decoration-none'>
+                            <Button variant='outline-dark' className='py-3 m-2 d-block w-100' >Go</Button>
+                        </Link>
                     </Card>
                 </Col>
             </Row>

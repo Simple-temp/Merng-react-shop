@@ -50,7 +50,7 @@ const Navigationbar = () => {
                                 <LinkContainer to="/admin/profile">
                                     <Nav.Link>Profile</Nav.Link>
                                 </LinkContainer>
-                                <LinkContainer to="/admin/history">
+                                <LinkContainer to="/userorderhistory">
                                     <Nav.Link>History</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/admin/user">

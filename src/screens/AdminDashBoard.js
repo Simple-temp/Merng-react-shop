@@ -9,7 +9,8 @@ const AdminDashBoard = () => {
     return (
         <div className='container'>
             {
-                cart.cart.cartItem.length === 0 && <Alert variant="primary" className='mt-3'>Empty dashboard..</Alert> 
+                cart.cart.cartItem.length === 0 ? <Alert variant="primary" className='mt-3'>Empty dashboard..</Alert> 
+                : <Alert variant="primary" className='mt-3'>Comming soon dashboard..</Alert> 
             }
         </div>
     );
