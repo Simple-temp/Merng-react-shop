@@ -55,7 +55,6 @@ const UserOrderHistory = () => {
                     }
                 )
                 dispatch({ type: "FETCH_SUCCESS", payload: data })
-                console.log(data)
             } catch (err) {
                 dispatch({ type: "FETCH_FAiL", payload: err })
                 console.log(err)

@@ -36,7 +36,7 @@ const SignUpPage = () => {
         }catch(err){
 
             console.log(err.message)
-            toast.error("Invalid email and password")
+            toast.error("This user already taken")
 
         }
 
