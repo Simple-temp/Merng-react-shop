@@ -5,6 +5,7 @@ import { Container, Row, Col, Button, Card, ListGroup } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import { clearCart, removeCart } from "../Redux/Action";
 import axois from "axios"
+import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
 
@@ -37,8 +38,10 @@ const PlaceOrder = () => {
             dispatch(clearCart())
             localStorage.removeItem("cartItem")
             navigate(`/order/${data.order._id}`)
+            toast.success("Order Submitted")
         } catch (err) {
             console.log(err)
+            toast.error("Order don't Submitted")
         }
     }
 
