@@ -59,6 +59,7 @@ const LoginPage = () => {
                         </Form.Group>
 
                         <p>Don't have any account? <Link to="/signup">Sign up</Link></p>
+                        <p><Link to="/newpassword">Fotget password?</Link></p>
 
                         <Button variant="outline-dark" type="submit">
                             Login

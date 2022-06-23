@@ -14,6 +14,7 @@ import AdminList from "./screens/AdminList";
 import Cart from "./screens/Cart";
 import CourseDetails from "./screens/CourseDetails";
 import LoginPage from "./screens/LoginPage";
+import NewPassword from "./screens/NewPassword";
 import OrderDetails from "./screens/OrderDetails";
 import PaymentMethod from "./screens/PaymentMethod";
 import PlaceOrder from "./screens/PlaceOrder";
@@ -42,6 +43,7 @@ function App() {
               <Route path="/payment" element={<PaymentMethod/>} />
               <Route path="/placeorder" element={<PlaceOrder/>} />
               <Route path="/order/:id" element={<OrderDetails/>} />
+              <Route path="/newpassword" element={<NewPassword/>} />
 
               {/* Admin Routes */}
 
