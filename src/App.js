@@ -11,6 +11,7 @@ import AdminAllUser from "./screens/AdminAllUser";
 import AdminCOurseEdit from "./screens/AdminCOurseEdit";
 import AdminDashBoard from "./screens/AdminDashBoard";
 import AdminList from "./screens/AdminList";
+import AllOrders from "./screens/AllOrders";
 import Cart from "./screens/Cart";
 import CourseDetails from "./screens/CourseDetails";
 import LoginPage from "./screens/LoginPage";
@@ -51,6 +52,7 @@ function App() {
               <Route path="/admin/profile" element={<UpdateProfile/>} />
               <Route path="/admin/user" element={<AdminAllUser/>} />
               <Route path="/admin/course" element={<AdminAllCourse/>} />
+              <Route path="/admin/orders" element={<AllOrders/>} />
               <Route path="/admin/adminlist" element={<AdminList/>} />
               <Route path="/admin/courseedit" element={<AdminCOurseEdit/>} />
               <Route path="/admin/courseedit/:id" element={<AdminCOurseEdit/>} />

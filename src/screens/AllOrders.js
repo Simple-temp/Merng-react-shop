@@ -1,60 +1,16 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React from 'react';
+import { GET_ALL_ORDER } from '../graphqlQueres/Queres';
+import { useQuery, useMutation } from "@apollo/client"
 import { Button, Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import axois from "axios";
-import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from "@apollo/client";
-import { toast } from 'react-toastify';
 import { DELETE_ORDER } from '../grapgqlMutation/Mutations';
+import { toast } from 'react-toastify';
 
+const AllOrders = () => {
 
-const reducer = (state, action) => {
-
-    switch (action.type) {
-
-        case "FETCH_REQUEST":
-            return { ...state, loading: true }
-        case "FETCH_SUCCESS":
-            return { ...state, loading: false, orders: action.payload }
-        case "FETCH_FAiL":
-            return { ...state, loading: false, error: action.payload }
-        default:
-            return state
-    }
-
-}
-
-const UserOrderHistory = () => {
-
+    const { loading, error, data } = useQuery(GET_ALL_ORDER)
     const [deleteorder] = useMutation(DELETE_ORDER)
-    const user = useSelector((state) => state.handleCart)
     const navigate = useNavigate()
-
-    const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
-        loading: true,
-        error: ""
-    })
-
-    useEffect(() => {
-
-        const fetchOrder = async () => {
-            dispatch({ type: "FETCH_REQUEST" })
-            try {
-                const { data } = await axois.get(`http://localhost:4000/api/order/author`,
-                    {
-                        headers: { authorization: `Bearer ${user.userInfo.token}` }
-                    }
-                )
-                dispatch({ type: "FETCH_SUCCESS", payload: data })
-            } catch (err) {
-                dispatch({ type: "FETCH_FAiL", payload: err })
-                console.log(err)
-            }
-        }
-        fetchOrder()
-
-    }, [])
 
     const handleRemove = (id) => {
         deleteorder({
@@ -67,7 +23,7 @@ const UserOrderHistory = () => {
     }
 
     return (
-        <div className='container'>
+        <div>
             <Row>
                 <Col lg={12}>
                     {
@@ -86,12 +42,12 @@ const UserOrderHistory = () => {
                                         </tr>
                                     </thead>
                                     {
-                                        orders.length === 0 ? <h5 className='text-secondary'>No Order Available</h5>
+                                        data.order && data.order.length === 0 ? <span className='text-secondary'>No Order Available</span>
                                             : <tbody>
-                                                {orders.map((order) => (
+                                                {data.order.map((order) => (
                                                     <tr key={order._id}>
                                                         <td data-label="ID">{order._id}</td>
-                                                        <td data-label="DATE">{order.sellAt.substring(0, 10)}</td>
+                                                        <td data-label="DATE">{ new Date(order.sellAt).toDateString() }</td>
                                                         <td data-label="TOTAL">${order.totalPrice.toFixed(2)}</td>
                                                         <td data-label="PAID">{order.isPaid ? <Button variant="outline-success">Paid at {order.paidAt.substring(0, 10)}</Button> : <Button variant="outline-danger">Not Paid</Button>}</td>
                                                         <td data-label="DELIVERED">{
@@ -121,4 +77,4 @@ const UserOrderHistory = () => {
     );
 };
 
-export default UserOrderHistory;
+export default AllOrders;

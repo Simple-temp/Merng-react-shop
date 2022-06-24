@@ -21,14 +21,12 @@ const SignUpPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(e)
-        console.log(formData)
 
         try{
 
             const { data } = await axios.post("http://localhost:4000/api/user/signup",{
                 formData
             })
-            console.log(data)
             dispatch(createUser(data))
             localStorage.setItem("userInfo", JSON.stringify(data))
             navigate("/")

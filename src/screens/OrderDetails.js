@@ -39,7 +39,7 @@ const OrderDetails = () => {
                     }
                 )
                 dispatch({ type: "FETCH_SUCCESS", payload: data })
-                console.log(data)
+
             } catch (err) {
                 dispatch({ type: "FETCH_FAIL", payload: err })
             }

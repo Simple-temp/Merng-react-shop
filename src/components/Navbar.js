@@ -48,7 +48,7 @@ const Navigationbar = () => {
                                     <Nav.Link>Dashboard</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/admin/profile">
-                                    <Nav.Link> {user.userInfo.name} Profile</Nav.Link>
+                                    <Nav.Link> {user.userInfo.name}</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/userorderhistory">
                                     <Nav.Link>History</Nav.Link>
@@ -58,6 +58,9 @@ const Navigationbar = () => {
                                 </LinkContainer>
                                 <LinkContainer to="/admin/course">
                                     <Nav.Link>Courses</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/admin/orders">
+                                    <Nav.Link>Orders</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/admin/adminlist">
                                     <Nav.Link>List</Nav.Link>
@@ -74,7 +77,7 @@ const Navigationbar = () => {
                                     <i className="fa-solid fa-cart-shopping mt-2 me-1"></i>
                                 </Link>
                                 <LinkContainer to="/updateprofile">
-                                    <Nav.Link> {user.userInfo.name} Profile</Nav.Link>
+                                    <Nav.Link> {user.userInfo.name}</Nav.Link>
                                 </LinkContainer>
                                 <LinkContainer to="/userorderhistory">
                                     <Nav.Link>Order history</Nav.Link>

@@ -142,7 +142,6 @@ mutation deleteOrder ( $orderId : ID! ) {
       _id
       userid
       orderitem{
-          course_id
           _id
           name
           quantity

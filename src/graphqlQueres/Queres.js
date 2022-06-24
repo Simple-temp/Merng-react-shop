@@ -67,7 +67,7 @@ query getCourseById ( $courseId : ID! ){
 export const GET_ALL_ORDER = gql `
 
 query getAllOrders {
-    orderitem{
+    order : orderitem{
       _id
       userid
       orderitem{
@@ -79,7 +79,6 @@ query getAllOrders {
           totalsell
           rating
           price
-          course_id
       }
       paymentMethod
       itemprice
