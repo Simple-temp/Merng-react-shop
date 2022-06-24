@@ -3,13 +3,14 @@ import { GET_ALL_ORDER } from '../graphqlQueres/Queres';
 import { useQuery, useMutation } from "@apollo/client"
 import { Button, Col, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { DELETE_ORDER } from '../grapgqlMutation/Mutations';
+import { DELETE_ORDER, ORDER_DELIVERED } from '../grapgqlMutation/Mutations';
 import { toast } from 'react-toastify';
 
 const AllOrders = () => {
 
     const { loading, error, data } = useQuery(GET_ALL_ORDER)
     const [deleteorder] = useMutation(DELETE_ORDER)
+    const [orderdelevered] = useMutation(ORDER_DELIVERED)
     const navigate = useNavigate()
 
     const handleRemove = (id) => {
@@ -19,6 +20,16 @@ const AllOrders = () => {
             }
         })
         toast.success("Order delete")
+        window.location.reload()
+    }
+
+    const deliveried = (id) =>{
+        orderdelevered({
+            variables : {
+                OrderId : id
+            }
+        })
+        toast.success("Order Delivered!")
         window.location.reload()
     }
 
@@ -52,8 +63,8 @@ const AllOrders = () => {
                                                         <td data-label="PAID">{order.isPaid ? <Button variant="outline-success">Paid at {order.paidAt.substring(0, 10)}</Button> : <Button variant="outline-danger">Not Paid</Button>}</td>
                                                         <td data-label="DELIVERED">{
                                                             order.isSelled
-                                                                ? <Button variant="outline-success">Delivered{order.sellAt.substring(0, 10)}</Button>
-                                                                : <Button variant="outline-danger">Not Delivered</Button>
+                                                                ? <Button variant="outline-success">Delivered {new Date(order.sellAt).toDateString()}</Button>
+                                                                : <Button variant="outline-danger" onClick={()=> deliveried (order._id)}>Click to Delivered</Button>
                                                         }
                                                         </td>
                                                         <td data-label="DETAILS">
@@ -78,3 +89,4 @@ const AllOrders = () => {
 };
 
 export default AllOrders;
+//order.sellAt.substring(0, 10)

@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import store from './Redux/Store';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://fake-udemy.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });
 

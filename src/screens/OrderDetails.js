@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { Alert, Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -33,13 +34,12 @@ const OrderDetails = () => {
         const fetchOrder = async () => {
             dispatch({ type: "FETCH_REQUEST" })
             try {
-                const { data } = await axios.get(`http://localhost:4000/api/order/${id}`,
+                const { data } = await axios.get(`https://fake-udemy.herokuapp.com/api/order/${id}`,
                     {
                         headers: { authorization: `Bearer ${user.userInfo.token}` }
                     }
                 )
                 dispatch({ type: "FETCH_SUCCESS", payload: data })
-                console.log(data)
 
             } catch (err) {
                 dispatch({ type: "FETCH_FAIL", payload: err })
@@ -48,6 +48,10 @@ const OrderDetails = () => {
         fetchOrder()
 
     }, [])
+
+    const paymentBtn = () =>{
+        toast.error("Working on it..coming soon")
+    }
 
     return (
         <div>
@@ -110,8 +114,8 @@ const OrderDetails = () => {
                                         </Card>
                                         {
                                             order.paymentMethod === "PayPal"
-                                                ? <Button variant='outline-dark' className='ms-2 mt-2'>PayPal</Button>
-                                                : <Button variant='outline-dark' className='ms-2 mt-2'>Stripe</Button>
+                                                ? <Button variant='outline-dark' className='ms-2 mt-2' onClick={()=>paymentBtn()}>PayPal</Button>
+                                                : <Button variant='outline-dark' className='ms-2 mt-2' onClick={()=>paymentBtn()}>Stripe</Button>
                                         }
                                     </Col>
                                 </>

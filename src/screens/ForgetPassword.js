@@ -16,7 +16,7 @@ const ForgetPassword = () => {
 
         try{
 
-            const { data } =await axios.get(`http://localhost:4000/api/user/${email}`)
+            const { data } =await axios.get(`https://fake-udemy.herokuapp.com/api/user/${email}`)
             console.log(data)
             if(name === data.name && email === data.email){
                 navigate("/newpassword")

@@ -19,6 +19,7 @@ import NewPassword from "./screens/NewPassword";
 import OrderDetails from "./screens/OrderDetails";
 import PaymentMethod from "./screens/PaymentMethod";
 import PlaceOrder from "./screens/PlaceOrder";
+import PrivateRoute from "./screens/PrivateRoute";
 import SignUpPage from "./screens/SignUpPage";
 import UpdateProfile from "./screens/UpdateProfile";
 import UserOrderHistory from "./screens/UserOrderHistory";
@@ -41,7 +42,9 @@ function App() {
               <Route path="/updateprofile" element={<UpdateProfile/>} />
               <Route path="/userorderhistory" element={<UserOrderHistory/>} />
               <Route path="/course/:id" element={<CourseDetails/>} />
-              <Route path="/payment" element={<PaymentMethod/>} />
+              <Route path="/payment" element={ <PrivateRoute>
+                <PaymentMethod/>
+              </PrivateRoute>} />
               <Route path="/placeorder" element={<PlaceOrder/>} />
               <Route path="/order/:id" element={<OrderDetails/>} />
               <Route path="/newpassword" element={<NewPassword/>} />

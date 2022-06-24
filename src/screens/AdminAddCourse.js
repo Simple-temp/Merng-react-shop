@@ -22,7 +22,7 @@ const AdminAddCourse = () => {
         console.log(formData)
         try{
 
-            const { data } = await axios.post(`http://localhost:4000/api/course/`,{
+            const { data } = await axios.post(`https://fake-udemy.herokuapp.com/api/course/`,{
                 ...formData
             })
             console.log(data)

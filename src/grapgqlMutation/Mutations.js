@@ -164,3 +164,12 @@ mutation deleteOrder ( $orderId : ID! ) {
 
 `
 
+export const ORDER_DELIVERED = gql `
+
+mutation isselled ( $OrderId  : ID! ){
+  UpdateOrderIsSelled(_id : $OrderId ){
+    paymentMethod
+  }
+}
+
+`
