@@ -39,6 +39,7 @@ const OrderDetails = () => {
                     }
                 )
                 dispatch({ type: "FETCH_SUCCESS", payload: data })
+                console.log(data)
 
             } catch (err) {
                 dispatch({ type: "FETCH_FAIL", payload: err })
@@ -72,6 +73,9 @@ const OrderDetails = () => {
                                                     : <Alert variant='danger'> <b>Delivered:</b>  Not Delivered</Alert>
                                             }
                                         </Card>
+                                        <Card className='mt-1'>
+                                            <Alert variant='info'> <b>Payment:</b> {order.paymentMethod}</Alert>
+                                        </Card>
                                         <ListGroup className='mt-1'>
                                             {
                                                 order.orderitem.map((item) => (
@@ -104,6 +108,11 @@ const OrderDetails = () => {
                                                 <ListGroup.Item>Total Price : ${order.totalPrice}</ListGroup.Item>
                                             </ListGroup>
                                         </Card>
+                                        {
+                                            order.paymentMethod === "PayPal"
+                                                ? <Button variant='outline-dark' className='ms-2 mt-2'>PayPal</Button>
+                                                : <Button variant='outline-dark' className='ms-2 mt-2'>Stripe</Button>
+                                        }
                                     </Col>
                                 </>
                     }

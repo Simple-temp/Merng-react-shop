@@ -23,7 +23,7 @@ const AllOrders = () => {
     }
 
     return (
-        <div>
+        <div className='container'>
             <Row>
                 <Col lg={12}>
                     {
