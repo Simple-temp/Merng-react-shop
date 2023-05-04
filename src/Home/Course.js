@@ -19,7 +19,7 @@ const Course = () => {
 
         const getProducts = async () => {
 
-            const { data } = await axios.get("https://fake-udemy.herokuapp.com/api/course")
+            const { data } = await axios.get("https://udemy-j7sz.onrender.com/api/course")
             setGetdata(data)
             setFilter(data)
         }

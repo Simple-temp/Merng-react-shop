@@ -26,7 +26,7 @@ const LoginPage = () => {
 
         try{
 
-            const { data } = await axios.post("https://fake-udemy.herokuapp.com/api/user/signin",{
+            const { data } = await axios.post("https://udemy-j7sz.onrender.com/api/user/signin",{
                 formData
             })
             // console.log(data)

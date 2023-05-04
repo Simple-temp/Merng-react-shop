@@ -24,7 +24,7 @@ const AdminCOurseEdit = () => {
         console.log(formData)
         try{
 
-            const { data } = await axios.put(`https://fake-udemy.herokuapp.com/api/course/updatecourse/${id}`,{
+            const { data } = await axios.put(`https://udemy-j7sz.onrender.com/api/course/updatecourse/${id}`,{
                 ...formData
             })
             console.log(data)

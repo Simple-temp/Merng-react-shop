@@ -24,7 +24,7 @@ const PlaceOrder = () => {
 
     const placeOrderhandle = async () => {
         try {
-            const { data } = await axois.post("https://fake-udemy.herokuapp.com/api/order",
+            const { data } = await axois.post("https://udemy-j7sz.onrender.com/api/order",
                 {
                     orderitem: item.cart.cartItem,
                     paymentMethod: item.cart.paymentMethod,

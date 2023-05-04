@@ -34,7 +34,7 @@ const OrderDetails = () => {
         const fetchOrder = async () => {
             dispatch({ type: "FETCH_REQUEST" })
             try {
-                const { data } = await axios.get(`https://fake-udemy.herokuapp.com/api/order/${id}`,
+                const { data } = await axios.get(`https://udemy-j7sz.onrender.com/api/order/${id}`,
                     {
                         headers: { authorization: `Bearer ${user.userInfo.token}` }
                     }

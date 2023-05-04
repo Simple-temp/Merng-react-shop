@@ -24,7 +24,7 @@ const SignUpPage = () => {
 
         try{
 
-            const { data } = await axios.post("https://fake-udemy.herokuapp.com/api/user/signup",{
+            const { data } = await axios.post("https://udemy-j7sz.onrender.com/api/user/signup",{
                 formData
             })
             dispatch(createUser(data))

@@ -20,7 +20,7 @@ const NewPassword = () => {
         if(password === confirmpassword){
             try {
 
-                const { data } = await axios.put(`https://fake-udemy.herokuapp.com/api/user/${email}`,{
+                const { data } = await axios.put(`https://udemy-j7sz.onrender.com/api/user/${email}`,{
                     email,
                     password,
                 })

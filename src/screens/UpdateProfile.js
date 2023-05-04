@@ -28,7 +28,7 @@ const UpdateProfile = () => {
 
         try {
 
-            const { data } = await axios.put("https://fake-udemy.herokuapp.com/api/user/updateprofile",
+            const { data } = await axios.put("https://udemy-j7sz.onrender.com/api/user/updateprofile",
                 {
                     formData
                 },

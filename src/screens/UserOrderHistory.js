@@ -41,7 +41,7 @@ const UserOrderHistory = () => {
         const fetchOrder = async () => {
             dispatch({ type: "FETCH_REQUEST" })
             try {
-                const { data } = await axois.get(`https://fake-udemy.herokuapp.com/api/order/author`,
+                const { data } = await axois.get(`https://udemy-j7sz.onrender.com/api/order/author`,
                     {
                         headers: { authorization: `Bearer ${user.userInfo.token}` }
                     }
